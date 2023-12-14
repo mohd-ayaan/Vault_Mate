@@ -73,10 +73,9 @@ app.post("/signin",(req,res)=>{
     user.findOne({_id:req.body.mobile})
     .then(detail=>{
         console.log(detail);
-        if(!detail){
-            res.redirect("/main");
-        }
-        if(detail.Password==req.body.password){
+        if(detail==null){
+            res.render("usernotfound.ejs");
+        }else if(detail.Password==req.body.password){
             res.redirect("/user");
         }
         else{
