@@ -17,15 +17,21 @@
             </a>
         </div>
     </header>
+    <h1><%= filename %></h1>
     <div class="box-container">
         <div class="box">
             <img src="4.jpg" alt="Square Image">
         </div>
         <div class="button-row">
-            <a href="/upload"><button class="green-button">Upload</button></a>
-            <a href="/preview"><button class="green-button">Preview</button></a>
+            <form action='/upload/<%=filename%>'' method="post" enctype="multipart/form-data">
+                <div class="file-input">
+                  <label for="image">Choose an image:</label></br>
+                  <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .pdf" required>
+                </div>
+                <button type="submit">Upload</button>
+              </form>
+            <a href="/image/<%=filename%>" target="_blank"><button class="green-button">Preview</button></a>
         </div>
-        
     </div>
     <br>
     <footer class="footer">
