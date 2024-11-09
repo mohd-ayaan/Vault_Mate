@@ -9,7 +9,7 @@
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #071a07; /* Green color */
+    color: #008000; /* Green color */
 }
 
 /* Style for input fields and select */
@@ -44,24 +44,21 @@
 .clear {
     clear: both;
 }
-.form-container {
+.form-containerc {
     display: flexbox;
-    flex-direction:column;
+    flex-direction:row;
     justify-content: center;
     align-items: center;
-    /* margin-top: 20px; */
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    /* padding: 20px; */
+    padding: 20px;
     background-color: #f3f3f3;
     border-radius: 10px;
-    box-shadow: 0px 2px 5px 5px  #CA8790;
+    box-shadow: 4px 2px 5px rgb(21, 163, 8);
     max-width: 500px;
 }
 
-.form-container h1{
-    color: #cf5d79;
-}
 .form-group {
     margin-left: 50px;
     margin-bottom: 0px;
@@ -77,7 +74,7 @@
 .form-group label {
     font-weight: bold;
     margin-bottom: 5px;
-    color: black; /* Green color */
+    color: #008000; /* Green color */
 }
 
 /* Style for input fields and select */
@@ -100,12 +97,10 @@
     color: #fff;
     border: none;
     border-radius: 10px;
-    /* padding: 12px 20px; */
-    margin-top: 5px;
-    text-align: center;
+    padding: 12px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-}   
+}
 
 .form-group button[type="submit"]:hover {
     background-color: #006400; /* Darker green on hover */

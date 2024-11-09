@@ -9,8 +9,12 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
-            background-color: #e74c3c; /* Red background color */
-            color: #fff; /* White text color */
+            background-color: #fff; /* Red background color */
+            color: #000000; /* White text color */
+        }
+
+        #warning{
+            color: #e74c3c;
         }
 
         h2 {
@@ -40,10 +44,16 @@
         a:hover {
             text-decoration: underline;
         }
+        
+        #countdown{
+            color: #3498db;
+        }
+
     </style>
 </head>
 <body>
-    <h2>Warning: User Already Exists</h2>
+    <h2 id="warning">Warning:</h2>
+    <h2> User Already Exists</h2>
     <p id="message">A user with this mobile number already exists. Please try using a new mobile number.</p>
 
     <p id="redirectMessage">Redirecting in <span id="countdown">10</span> seconds...</p>
@@ -58,7 +68,7 @@
                 countdownElement.innerText = countdownValue - 1;
                 setTimeout(redirectWithCountdown, 1000);
             } else {
-                window.location.href = "/main";
+                window.location.href = "/signin";
             }
         }
 
@@ -66,6 +76,6 @@
         setTimeout(redirectWithCountdown, 1000);
     </script>
 
-    <p>If you are not redirected, you can click <a href="/main">here</a>.</p>
+    <p>If you are not redirected, you can click <a href="/signin">here</a>.</p>
 </body>
 </html>

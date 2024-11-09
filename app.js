@@ -34,12 +34,19 @@ app.get("/contact",(req,res)=>{
 });
 
 app.get("/main",(req,res)=>{
+    res.render("main.ejs");
+});
+
+app.get("/signin",(req,res)=>{
     res.render("start.ejs");
 });
 
 app.get("/signup",(req,res)=>{
     res.render("signup.ejs");
 });
+
+
+
 
 
 app.post("/signup",(req,res)=>{
@@ -147,6 +154,10 @@ app.get("/upload",(req,res)=>{
     res.render("upload.ejs");
 });
 
+app.get("/uploadsucess",(req,res)=>{
+    res.render("uploadsucess.ejs");
+});
+
 app.get("/preview",(req,res)=>{
     res.render("preview.ejs");
 });
@@ -155,7 +166,7 @@ app.get("/preview",(req,res)=>{
 app.post('/upload/:filemode',upload.single('image'),verifyToken,(req,res)=>{
     save_image_file_service(req.file,req.user.user,req.params.filemode)
     .then(()=>{
-        res.redirect('/user');
+        res.redirect('/uploadsucess');
     })
     .catch(()=>{
     })

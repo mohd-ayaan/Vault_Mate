@@ -1,4 +1,4 @@
-/* Reset some deault styles */
+/* Reset some default styles */
 body, h1, h2, h3, p, a, ul, li, img {
     margin: 0;
     padding: 0;
@@ -7,15 +7,14 @@ body, h1, h2, h3, p, a, ul, li, img {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #E1ACAC;
-    /* color: #fff; */
+    background-color: #e7ffba;
+    color: #fff;
     line-height: 1.6;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    
     max-width: 1200px;
     margin: 0 auto;
     padding-left: 0 20px;
@@ -25,19 +24,17 @@ body {
 }
 
 .header {
-    background-color: #585353;
+    background-color: #000000;
     color: #fff;
-    padding: 8px;
+    padding: 20px 0;
 }
 
 .logo {
-    justify-content: space-between;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: #fff;
     font-size: 20px;
-  
 }
 
 .logo-image {
@@ -72,8 +69,8 @@ body {
 .menu a:hover {
     color: #264606;
     font-weight: bold; /* Bold text on hover */
-    text-decoration: none; /* Underline text on hover */
-    background-color: #FEFAF6; /* Change background color on hover */
+    text-decoration: underline; /* Underline text on hover */
+    background-color: #fff; /* Change background color on hover */
     border-radius: 5px; /* Add a rounded border on hover */
     padding: 5px 10px; /* Increase padding on hover */
     transition: color 0.3s, background-color 0.3s, font-weight 0.3s;
@@ -143,22 +140,21 @@ p {
     padding: 20px;
     background-color: #f3f3f3;
     border-radius: 10px;
-    box-shadow: 0px 1px 1px 5px #e7c7c7 ;
-    text-decoration: none;
+    box-shadow: 0px 4px 6px rgb(21, 163, 8);
 }
 
-/* .form-container input[type="text"], */
-.form-container input {
-    width: 95%;
+.form-container input[type="text"],
+.form-container input[type="password"] {
+    width: 100%;
     padding: 12px;
     margin: 10px 0;
     border: 1px solid #0c043e;
     border-radius: 10px;
     background-color: #f8f8f8;
 }
-/* .form-container input[type="text"]:hover, */
-.form-container input:hover {
-    border-color: #393057; /* Change border color on hover */
+.form-container input[type="text"]:hover,
+.form-container input[type="password"]:hover {
+    border-color: #1c095b; /* Change border color on hover */
     transform: translateY(-5px); /* Move the input element up on hover */
     transition: transform 0.2s ease; /* Add a smooth transition */
 }
@@ -182,7 +178,7 @@ p {
 
 .form-button {
     padding: 10px 20px;
-    background-color: #c0516e;
+    background-color: #208019;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -190,16 +186,13 @@ p {
     transition: background-color 0.3s;
     display: inline-block; /* Set the display to inline-block */
     margin-right: 10px; /* Add some margin to separate the buttons */
-    text-decoration: none;
 }
 .button-container {
-    text-decoration: none;
-    padding-top: 20px;
     display: flex;
     gap: 15px; /* Adjust the gap as needed */
 }
 .form-button:hover {
-    background-color: #BB8493;
+    background-color: #2980b9;
 }
 .circular-image {
     width: 300px;
@@ -244,9 +237,8 @@ p {
     color: white;
 }
 .footer {
-    background-color: #585353;
+    background-color: #000000;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
-

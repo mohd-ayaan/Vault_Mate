@@ -9,13 +9,14 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
-            background-color: #3498db; /* Blue background color */
-            color: #fff; /* White text color */
+            background-color: #fff; /* Blue background color */
+            color: #000000; /* White text color */
         }
 
         h2 {
             font-size: 36px; /* Larger font size */
             margin-bottom: 20px;
+            color: #e74c3c;
         }
 
         #message {
@@ -33,12 +34,16 @@
         }
 
         a {
-            color: #fff; /* White text color */
+            color: #3498db; /* White text color */
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
+        }
+        
+        #countdown{
+            color: #3498db;
         }
     </style>
 </head>
@@ -58,7 +63,7 @@
                 countdownElement.innerText = countdownValue - 1;
                 setTimeout(redirectWithCountdown, 1000);
             } else {
-                window.location.href = "/main";
+                window.location.href = "/signin";
             }
         }
 
@@ -66,6 +71,6 @@
         setTimeout(redirectWithCountdown, 1000);
     </script>
 
-    <p>If you are not redirected, you can go back to the <a href="/main">login page</a> manually.</p>
+    <p>If you are not redirected, you can click <a href="/signin">here</a> manually.</p>
 </body>
 </html>

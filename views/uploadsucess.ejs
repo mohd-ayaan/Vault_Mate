@@ -3,27 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wrong Password</title>
+    <title>User Not Found</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
-            background-color: #f8f8f8;
-            color: #333;
+            background-color: #fff; /* Blue background color */
+            color: black; /* White text color */
         }
 
         h2 {
-            color: #e74c3c;
-        }
-
-        #redirectMessage {
-            font-size: 24px;
+            font-size: 36px; /* Larger font size */
             margin-bottom: 20px;
         }
 
-        a {
+        #message {
+            font-size: 24px; /* Medium font size */
+            margin-bottom: 20px;
             color: #3498db;
+        }
+
+        #redirectMessage {
+            font-size: 20px; /* Medium font size for the redirect message */
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px; /* Smaller font size for regular text */
+        }
+
+        a {
+            color: #3498db; /* White text color */
             text-decoration: none;
         }
 
@@ -37,8 +48,10 @@
     </style>
 </head>
 <body>
-    <h2>Wrong Password</h2>
-    <p id="redirectMessage">Redirecting in <span id="countdown">3</span> seconds...</p>
+    
+    <p id="message">Image Sucessfully  Uploaded.</p>
+
+    <p id="redirectMessage">Redirecting in <span id="countdown">5</span> seconds...</p>
 
     <script>
         // Function to update countdown and redirect
@@ -50,14 +63,14 @@
                 countdownElement.innerText = countdownValue - 1;
                 setTimeout(redirectWithCountdown, 1000);
             } else {
-                window.location.href = "/signin";
+                window.location.href = "/main";
             }
         }
 
         // Set initial timeout for redirection
-        setTimeout(redirectWithCountdown, 1000);
+        setTimeout(redirectWithCountdown, 1000);    
     </script>
 
-    <p>If you are not redirected, you can click <a href="/signin">here</a>.</p>
+    <p>If you are not redirected, you can go back to the <a href="/main">Home page</a> manually.</p>
 </body>
 </html>
