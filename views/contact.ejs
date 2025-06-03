@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>VAULT MATE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Contact Vault Mate</title>
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <a class="logo" href="#">
+            <a class="logo" href="/">
                 <img class="logo-image" src="2.png" alt="Vault Mate Logo">
                 <span class="site-title">VAULT MATE</span>
             </a>
@@ -19,45 +19,88 @@
                 <ul>
                     <li><a href="/main">HOME</a></li>
                     <li><a href="/about">ABOUT</a></li>
-                    <li><a href="/main">IMPORTANT LINKS</a></li>
+                    <li><a href="/contact">CONTACT</a></li>
+                    <li><a href="/logout">LOG OUT</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <br><br>
-    <div class="contact-containera">
-        <div class="contact-infoo">
-            <h2>Contact Information</h2>
-            <p>Email: example@example.com</p>
-            <p>Phone: +1 (123) 456-7890</p>
+
+    <main class="main-content-wrapper">
+        <h1 class="contact-page-heading">Get in Touch with Vault Mate</h1>
+
+        <div class="contact-content-grid">
+            <div class="contact-info-card">
+                <div class="contact-info-section">
+                    <h2>Contact Information</h2>
+                    <p><i class="fas fa-envelope contact-icon"></i> Email: <a href="mailto:support@vaultmate.com">support@vaultmate.com</a></p>
+                    <p><i class="fas fa-phone contact-icon"></i> Phone: <a href="tel:+11234567890">+91 098-765-43-21</a></p>
+                    <p><i class="fas fa-map-marker-alt contact-icon"></i> Address: kanpur, India</p>
+                </div>
+
+                <div class="social-media-section">
+                    <h2>Connect with Us</h2>
+                    <div class="social-icons-grid">
+                        <!-- Option 1: Using your image icons (as in image_f8eb58.png)  -->
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon-box">
+                            <img src="f.png" alt="Facebook">
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon-box">
+                            <img src="t.jpg" alt="Twitter">
+                        </a>
+                        <a href="https://www.linkedin.com" target="_blank" class="social-icon-box">
+                            <img src="l.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" class="social-icon-box">
+                            <img src="i.png" alt="Instagram">
+                        </a>
+
+                        <!-- Option 2: Using Font Awesome icons -->
+                        <!-- <a href="https://www.facebook.com" target="_blank" class="social-icon-box">
+                            <i class="fab fa-facebook-f social-icon"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon-box">
+                            <i class="fab fa-twitter social-icon"></i>
+                        </a>
+                        <a href="https://www.linkedin.com" target="_blank" class="social-icon-box">
+                            <i class="fab fa-linkedin-in social-icon"></i>
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" class="social-icon-box">
+                            <i class="fab fa-instagram social-icon"></i>
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h2>Send Us a Message</h2>
+                <form action="/submit-contact-form" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" placeholder="What's your message about?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <div class="form-action">
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="social-mediac">
-            <h2>Connect with Us</h2>
-            <div class="social-boxa">
-                <a href="https://www.facebook.com" target="_blank">
-                    <img src="f.png" alt="Facebook">
-                </a>
-            </div>
-            <div class="social-boxa">
-                <a href="https://www.twitter.com" target="_blank">
-                    <img src="t.jpg" alt="Twitter">
-                </a>
-            </div>
-            <div class="social-boxa">
-                <a href="https://www.linkedin.com" target="_blank">
-                    <img src="l.png" alt="LinkedIn">
-                </a>
-            </div>
-            <div class="social-boxa">
-                <a href="https://www.instagram.com" target="_blank">
-                    <img src="i.png" alt="Instagram">
-                </a>
-            </div>
-        </div>
-    </div>    
-    <br><br><br><br><br><br>
+    </main>
+
     <footer class="footer">
-        <h3 align = "left">&nbsp;&copy; 2023 Vault Mate. All rights reserved.</h3>
+        <h3>&copy; <%= new Date().getFullYear() %> Vault Mate. All rights reserved. | <a href="/privacy" style="color: inherit; text-decoration: none;">Privacy Policy</a> | <a href="/terms" style="color: inherit; text-decoration: none;">Terms of Service</a></h3>
     </footer>
 </body>
 </html>

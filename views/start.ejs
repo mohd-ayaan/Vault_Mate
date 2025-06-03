@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>VAULT MATE</title>
 </head>
 <body>
@@ -24,47 +24,32 @@
             </nav>
         </div>
     </header>
-    <div class="container">
-        <div class="section-container">
-            <h1 class="section-title">Login to your account</h1>
-            <h2 class="section-subtitle">Login using Social accounts</h2>
-            <div class="fa-container">
-                <a href="#" class="fa fa-facebook"></a>
+
+    <div class="page-wrapper">
+        <div class="login-card"> <h2 class="section-title">Login to your account</h2> <p class="social-login-text">Login using Social accounts</p> <div class="fa-container social-icons-login"> <a href="#" class="fa fa-facebook"></a>
                 <a href="#" class="fa fa-twitter"></a>
                 <a href="#" class="fa fa-google"></a>
             </div>
-            <br>
-            <h2 class="section-subtitle">OR</h2>
-            <div class="form-container">
-                <form action="/signin" method="post">
-                    <input type="number" class="form-input" placeholder="Mobile Number" name="mobile" required>
+            <p class="or-separator">OR</p> <form action="/signin" method="post" class="login-form">
+                <div class="input-group">
+                    <input type="text" class="form-input" placeholder="Mobile Number" name="mobile" required>
                     <input type="password" class="form-input" name="password" placeholder="password" required>
-                    <br>
-                    <div class="button-container">
-                        <!-- <a class="form-button">Reset</a> -->
-                        <button type="reset">Reset</button>
-                        <button type="submit" class="form-button">Sign In</button>
-                        <!-- <a href="/signin" class="form-button">Sign In</a> -->
-                    </div>
-                </form>                
-            </div>
+                </div>
+                <div class="button-group">
+                    <button type="reset" class="form-button reset-button">Reset</button>
+                    <button type="submit" class="form-button signin-button">Sign In</button>
+                </div>
+            </form>
         </div>
-        <div class="section-container">
-            <div class="text-container">
-                <center><h1 class="section-title">New Here?</h1></center>
-                <center><p>Sign Up and discover new opportunities here</p></center>
-                <br>
-                <center><img src="1.png" alt="Image Description" class="circular-image"></center>
-            </div>
-            <br>
-            <center><a class="form-button" href="/signup">Sign Up</a></center>
-            <br>
-        </div> 
+
+        <div class="signup-card"> <h2 class="section-title">New Here?</h2> <p class="section-subtitle">Sign Up and discover new opportunities here</p> <img src="1.png" alt="Vault Mate Logo" class="circular-image">
+            <a class="form-button signup-button" href="/signup">Sign Up</a> </div>
     </div>
-    <br>
+
     <footer class="footer">
-        <h3 align = "left">&nbsp;&copy; 2024 Vault Mate. All rights reserved.</h3>
+        <p>&copy; 2025 Vault Mate. All rights reserved.</p>
     </footer>
+
     <script src="signin.js"></script>
 </body>
 </html>

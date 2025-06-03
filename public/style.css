@@ -1,252 +1,464 @@
-/* Reset some deault styles */
-body, h1, h2, h3, p, a, ul, li, img {
-    margin: 0;
-    padding: 0;
+/* --- Global Styles & Reset --- */
+
+/* Basic reset for all elements to ensure consistent box model */
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #E1ACAC;
-    /* color: #fff; */
-    line-height: 1.6;
+/* Reset default margins and padding on html and body. */
+/* Crucial for controlling full-width elements and preventing unwanted scrollbars. */
+html, body {
     margin: 0;
     padding: 0;
+    width: 100%; /* Ensure html and body take full width */
+    height: 100%; /* Ensure html and body take full height for min-height calculations */
+    overflow-x: hidden; /* Prevents horizontal scrolling caused by content overflow */
 }
 
-.container {
+/* Base body styles */
+body {
+    font-family: 'Arial', sans-serif; /* Modern sans-serif font stack */
+    background-color: #F8E7E7; /* Soft pink background color */
+    color: #333; /* Default text color for better readability */
+    line-height: 1.6; /* Improved line spacing for readability */
     
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 0 20px;
+    /* Flexbox for main layout: stacks header, content, and footer vertically */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body always takes at least the full viewport height */
 }
+
+/* --- Utility Classes --- */
+
+/* General container for content within full-width sections (e.g., header, footer if content is centered) */
+.container {
+    max-width: 1200px; /* Limits the maximum width of content for readability */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0 20px; /* Adds horizontal padding inside the container */
+    
+    /* Flexbox for elements within the container (e.g., logo and menu in header) */
+    display: flex;
+    justify-content: space-between; /* Distributes space between items */
+    align-items: center; /* Aligns items vertically in the center */
+}
+
+/* --- Header Styles --- */
 
 .header {
-    background-color: #585353;
-    color: #fff;
-    padding: 8px;
+    background-color: #585353; /* Dark gray background */
+    color: #fff; /* White text color */
+    padding: 10px 0; /* REDUCED VERTICAL PADDING to make header less tall */
+    width: 100%; /* Ensures header spans the full viewport width */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle bottom shadow for depth */
 }
 
 .logo {
-    justify-content: space-between;
     display: flex;
     align-items: center;
-    text-decoration: none;
-    color: #fff;
-    font-size: 20px;
-  
+    text-decoration: none; /* Removes underline from logo link */
+    color: #fff; /* White text for logo */
 }
 
 .logo-image {
-    width: 50px; /* Specify the desired size */
-    height: 50px; /* Specify the desired size */
-    border-radius: 50%; /* Create a round shape */
-    margin-right: 10px;
+    width: 45px; /* Slightly REDUCED LOGO IMAGE SIZE */
+    height: 45px; /* Slightly REDUCED LOGO IMAGE SIZE */
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 8px; /* Slightly REDUCED SPACE between logo image and text */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
 }
 
 .site-title {
-    font-size: 24px;
+    font-size: 26px; /* Slightly REDUCED FONT SIZE */
     font-weight: bold;
 }
 
 .menu ul {
-    list-style: none;
-    display: flex;
+    list-style: none; /* Removes bullet points from list */
+    display: flex; /* Arranges menu items horizontally */
     align-items: center;
-}
-
-.menu li {
-    margin-right: 20px;
+    gap: 20px; /* Slightly REDUCED SPACE between menu items */
 }
 
 .menu a {
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
-    transition: color 0.3s;
+    font-size: 16px; /* Slightly REDUCED FONT SIZE */
+    padding: 6px 10px; /* Slightly REDUCED PADDING for a smaller clickable area */
+    transition: all 0.3s ease; /* Smooth transition for all hover effects */
 }
 
 .menu a:hover {
-    color: #264606;
+    color: #264606; /* Dark green text on hover */
     font-weight: bold; /* Bold text on hover */
-    text-decoration: none; /* Underline text on hover */
-    background-color: #FEFAF6; /* Change background color on hover */
-    border-radius: 5px; /* Add a rounded border on hover */
-    padding: 5px 10px; /* Increase padding on hover */
-    transition: color 0.3s, background-color 0.3s, font-weight 0.3s;
-}
-.section-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    padding: 21px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.3);
-    width: 80%; /* Set the width to 60% of the screen */
-    margin: 10 auto; /* Center the section horizontally */
+    background-color: #FEFAF6; /* Light background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+    text-decoration: none; /* Ensures no underline */
 }
 
+/* --- Main Page Content Layout (Login/Signup Cards) --- */
+
+.page-wrapper {
+    flex-grow: 1; /* Allows this section to fill available vertical space between header and footer */
+    display: flex; /* Arranges login and signup cards horizontally */
+    flex-wrap: wrap; /* Allows cards to wrap to the next line on smaller screens */
+    gap: 30px; /* Space between the login and signup cards */
+    padding: 40px 20px; /* Padding around the entire content area */
+    justify-content: center; /* Centers cards horizontally */
+    align-items: flex-start; /* IMPORTANT: Align cards to the top. This can help visualize height differences better than 'center' */
+    max-width: 1000px; /* Limits the overall width of the card container */
+    margin: 0 auto; /* Centers the card container horizontally */
+}
+
+/* --- Card Base Styles (for both login and signup cards) --- */
+
+.login-card,
+.signup-card {
+    background-color: #fff; /* White background for the cards */
+    border-radius: 15px; /* Rounded corners for the cards */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Soft, subtle shadow for depth */
+    padding: 40px; /* Generous padding inside cards */
+    text-align: center; /* Centers text and inline elements within the card */
+    flex-grow: 1; /* Allows cards to grow and fill available space */
+    min-width: 300px; /* Minimum width for cards to prevent squishing on small screens */
+    
+    /* Flexbox for content within each card (stacks vertically) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally within the card */
+    /* REMOVED 'justify-content: center;' here to let content dictate height more naturally,
+       and allow content to align to flex-start */
+    
+    /* MIN-HEIGHT ADDED TO ATTEMPT TO EQUALIZE HEIGHTS */
+    min-height: 520px; /* Adjust this value as needed to make them appear equal */
+}
+
+/* Adjustments for login card to try and balance height better */
+.login-card {
+    max-width: 450px; 
+    /* The combination of max-width and internal content causes height differences.
+       If you want truly equal sizes, consider removing max-width and letting flexbox dictate width,
+       or adjust padding/content to fill. */
+}
+
+/* Signup card might need adjusted padding or content to match */
+.signup-card {
+    max-width: 350px;
+    /* If still unequal, increase padding here or decrease in login-card */
+    /* For instance, try padding: 50px 40px; if it still looks too short */
+}
+
+/* --- Heading & Text Styles within Cards (no changes) --- */
+
 .section-title {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 28px;
     color: #333;
-    margin: 10px 0;
+    margin-bottom: 25px;
 }
-p {
-    color: black;
-}
+
 .section-subtitle {
     font-size: 16px;
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
-.social-icons {
-    display: flex;
-    padding: 10px;
-    font-size: 24px; /* Adjust the font size as needed */
-    color: #0b2a4b; /* Set the color for the icons */
-    margin-right: 10px; /* Add some spacing between the icons */
+.social-login-text {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 15px;
 }
 
-.social-icons a {
+p {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* --- Social Icons Section (no changes) --- */
+
+.fa-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.fa-container .fa {
+    font-size: 20px;
     width: 40px;
     height: 40px;
-    background-color: #fff;
-    border: 2px solid #ccc;
+    line-height: 40px;
     border-radius: 50%;
-    margin: 0 5px;
-    font-size: 18px;
-    color: #333;
+    background-color: #f0f0f0;
+    color: #555;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.social-icons a:hover {
-    background-color: #007bff;
-    color: #fff;
+.fa-container .fa:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.form-container {
+.fa-container .fa-facebook { background-color: #3B5998; color: white; }
+.fa-container .fa-twitter { background-color: #55ACEE; color: white; }
+.fa-container .fa-google { background-color: #dd4b39; color: white; }
+
+/* --- "OR" Separator Style (no changes) --- */
+
+.or-separator {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 25px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.or-separator::before {
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.or-separator::after {
+    right: 0;
+    transform: translateY(-50%);
+}
+
+/* --- Form Input Fields (no changes, assuming previous HTML updates) --- */
+
+.login-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 0px 1px 1px 5px #e7c7c7 ;
-    text-decoration: none;
 }
 
-/* .form-container input[type="text"], */
-.form-container input {
-    width: 95%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #0c043e;
-    border-radius: 10px;
-    background-color: #f8f8f8;
-}
-/* .form-container input[type="text"]:hover, */
-.form-container input:hover {
-    border-color: #393057; /* Change border color on hover */
-    transform: translateY(-5px); /* Move the input element up on hover */
-    transition: transform 0.2s ease; /* Add a smooth transition */
-}
-
-
-.form-container, .section-container {
-    height: 500px; /* Set the desired height for both containers */
-    padding: 20px;
-    border: 1px solid #330779;
-    margin: 10px;
-    text-align: center; /* Center the content horizontally */
+.input-group {
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .form-input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #eaf035;
-    border-radius: 5px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+    color: #aaa;
+}
+
+.form-input:focus {
+    border-color: #C0516E;
+    box-shadow: 0 0 0 3px rgba(192, 81, 110, 0.2);
+    outline: none;
+    background-color: #fff;
+}
+
+/* --- Buttons (General and Specific) (no changes) --- */
+
+.button-group {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
 }
 
 .form-button {
-    padding: 10px 20px;
-    background-color: #c0516e;
-    color: #fff;
+    padding: 15px 30px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-block; /* Set the display to inline-block */
-    margin-right: 10px; /* Add some margin to separate the buttons */
+    transition: all 0.3s ease;
     text-decoration: none;
-}
-.button-container {
-    text-decoration: none;
-    padding-top: 20px;
-    display: flex;
-    gap: 15px; /* Adjust the gap as needed */
-}
-.form-button:hover {
-    background-color: #BB8493;
-}
-.circular-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-} 
-.fa-container {
-    display: flex;
-    font-size: 23px;
-    padding: 10px; /* Increase the padding to create more space between icons */
-    justify-content: left; /* Center the logos horizontally within the container */
-    align-items: center;
-}
-
-.fa {
-    padding: 20px;
-    font-size: 80px; /* Increase the font size for larger logos */
-    width: 60px; /* Increase the width to make the circle */
-    height: 60px; /* Set the height to match the width to create a circle */
+    display: inline-block;
+    min-width: 120px;
     text-align: center;
-    text-decoration: none;
-    border-radius: 50%; /* Create a round circle */
-    margin: 0 10px; /* Add horizontal margin to create spacing between logos */
 }
 
-.fa:hover {
-    opacity: 0.7;
+.signin-button,
+.signup-button {
+    background-color: #C0516E;
+    color: #fff;
 }
 
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  }
-  
-.fa-twitter {
-    background: #55ACEE;
-    color: white;
+.signin-button:hover,
+.signup-button:hover {
+    background-color: #A4455E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(192, 81, 110, 0.2);
 }
-  
-.fa-google {
-    background: #dd4b39;
-    color: white;
+
+.reset-button {
+    background-color: #E0E0E0;
+    color: #555;
 }
+
+.reset-button:hover {
+    background-color: #D0D0D0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Signup Card Specifics (no changes) --- */
+.circular-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border: 5px solid #fff;
+}
+
+/* --- Footer Styles --- */
 .footer {
     background-color: #585353;
     color: #fff;
-    padding: 20px 0;
+    padding: 15px 0; /* REDUCED VERTICAL PADDING to make footer less tall */
     text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom */
+    width: 100%; /* Use 100% relative to the body, which is now full width and no overflow-x */
+    /* REMOVED '100vw' and relative positioning/left/right properties as they are no longer needed
+       with the html,body { overflow-x: hidden; } and width: 100%; setup. */
 }
 
+/* --- Responsive Adjustments (Media Queries) --- */
+
+/* For Tablets and smaller desktops (e.g., max-width 768px) */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    .header {
+        padding: 8px 0; /* Further reduced padding for smaller screens */
+    }
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+    .site-title {
+        font-size: 24px;
+    }
+    .menu a {
+        font-size: 15px;
+        padding: 5px 8px;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .menu li {
+        margin-right: 0;
+    }
+
+    /* Main content (cards) adjustments */
+    .page-wrapper {
+        flex-direction: column; /* Stack login and signup cards vertically */
+        padding: 30px 15px; /* Adjust padding around cards */
+    }
+
+    .login-card,
+    .signup-card {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 30px;
+        min-height: auto; /* Allow height to be determined by content on mobile */
+    }
+
+    /* Form and button adjustments */
+    .fa-container {
+        justify-content: center;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-button {
+        width: 100%;
+    }
+
+    /* Footer adjustments */
+    .footer {
+        padding: 15px 0; /* Keep consistent padding */
+    }
+}
+
+/* For Mobile phones (e.g., max-width 480px) */
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 20px;
+    }
+
+    .logo-image {
+        width: 35px;
+        height: 35px;
+    }
+
+    .menu a {
+        font-size: 14px;
+        padding: 4px 6px;
+    }
+
+    .login-card,
+    .signup-card {
+        padding: 20px; /* Even less padding on smallest screens */
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+    .section-subtitle {
+        font-size: 13px;
+    }
+
+    .circular-image {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    /* Further adjust input/button padding if needed for very small screens */
+    .form-input {
+        padding: 12px 15px;
+    }
+    .form-button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}

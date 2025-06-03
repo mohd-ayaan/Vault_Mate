@@ -1,52 +1,96 @@
+/* Styles specific to the main documents display */
 
-.product-container {
-    display: flex;
-    justify-content: space-between;
-    width: 80%; /* Adjust the width as needed */
+.main-content {
+    text-align: center; /* Center the welcome text and tagline */
+    padding: 20px;
+    flex-grow: 1; /* Allow main content to take available space */
+}
+
+.welcome-heading {
+    font-size: 3em; /* Adjust size as needed, using em for responsiveness */
+    color: #333; /* Darker color for prominence */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 40px; /* More space before the grid */
+}
+
+.document-grid {
+    display: grid;
+    /* Responsive grid: auto-fill columns, min width 250px, grow to 1fr */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px; /* Space between grid items */
+    max-width: 1200px; /* Limit overall grid width */
+    margin: 0 auto; /* Center the grid */
+    padding: 0 20px; /* Padding for smaller screens */
 }
 
 .product-box {
     background-color: #ffffff;
-    box-shadow: 0px 4px 8px rgba(3, 83, 12, 0.849);
-    height: 250px;
-    width: 300px;
-    padding: 30px;
-    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Softer, modern shadow */
+    border-radius: 12px; /* Slightly more rounded corners */
     text-align: center;
-    margin: 10px; /* Add margin to create spacing */
-    transition: transform 0.2s ease-in-out, transition-delay 0.1s;
+    padding: 25px; /* Adjusted padding inside the box */
+    display: flex; /* Use flex for internal content alignment */
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space */
+    align-items: center; /* Center items horizontally */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
-.product-box :hover
-{
-    transform: scale(1.05);
-    transition-delay: 0s;
+
+.product-box:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+.product-image {
+    width: 100%; /* Image container takes full width of box */
+    height: 150px; /* Fixed height for image container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px; /* Space between image and title */
 }
 
 .product-image img {
     max-width: 100%;
-    height: 200px;
-    width: 250px;
-    display: block;
-    margin: 0 auto;
+    max-height: 100%; /* Ensure image fits within its container */
+    object-fit: contain; /* Prevents image distortion */
+    border-radius: 8px; /* Slightly rounded corners for images */
 }
 
 .product-title {
-    font-size: 18px;
+    font-size: 1.1em; /* Slightly larger font for titles */
     font-weight: bold;
-    margin-top: 10px;
+    color: #333;
+    text-transform: uppercase; /* Consistency with caps in image */
 }
 
 .product-box a {
     text-decoration: none;
-    color: #333;
+    color: inherit; /* Inherit color from parent for consistency */
+    display: flex; /* Make the entire box clickable */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
+
+/* Existing styles from signin.css below this line (no changes to them) */
+/*
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
-
+*/
 /* Style for each product box */
+/*
 .group {
     position: relative;
     background-color: #f0f0f0;
@@ -65,7 +109,6 @@
     text-align: center;
 }
 
-/* Add the following styles for your header and footer */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -107,3 +150,4 @@
 .footer-social a:hover {
     text-decoration: underline;
 }
+*/

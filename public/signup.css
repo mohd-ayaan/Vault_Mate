@@ -1,116 +1,167 @@
-.form-group {
-    margin-left: 60px;
-    margin-right: 60px;
-    padding: 0; /* Remove padding to reduce space between inputs */
-}
+/* signup.css */
 
-/* Style for labels */
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #071a07; /* Green color */
-}
-
-/* Style for input fields and select */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"],
-.form-group select,
-.form-group input[type="tel"] {
-    width: 100%;
-    padding: 12px;
-    margin: 0;
-    border: 1px solid #0c043e;
-    border-radius: 10px;
-    background-color: #f8f8f8;
-}
-
-/* Style for the submit button */
-.form-group button[type="submit"] {
-    background-color: #008000; /* Green color */
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.form-group button[type="submit"]:hover {
-    background-color: #006400; /* Darker green on hover */
-}
-
-.clear {
-    clear: both;
-}
-.form-container {
-    display: flexbox;
-    flex-direction:column;
-    justify-content: center;
+/* Reusing main-content-wrapper for consistent page background and centering */
+.main-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    /* margin-top: 20px; */
-    margin-left: auto;
-    margin-right: auto;
-    /* padding: 20px; */
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px 5px  #CA8790;
-    max-width: 500px;
+    padding: 40px 20px;
+    background-color: #F8E7E7; /* Light pink background from image_f8eb58.png, image_f87a75.png */
 }
 
-.form-container h1{
-    color: #cf5d79;
+/* Form container styles (matches image_f87a75.png, image_f87a5d.png) */
+.form-container {
+    display: flex; /* Use flex for column layout */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center content horizontally within the card */
+    padding: 30px 40px; /* Adjusted padding for better spacing inside the card */
+    background-color: #f3f3f3; /* Light grey background from your CSS */
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px 5px rgba(202, 135, 144, 0.5); /* Enhanced shadow based on image_f87a75.png */
+    max-width: 500px;
+    width: 100%; /* Ensure responsiveness */
+    margin: 30px auto; /* Vertical margin and horizontal centering */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
+
+.form-heading {
+    color: #cf5d79; /* Reddish color from image_f87a75.png */
+    font-size: 2.2em; /* Slightly larger heading */
+    margin-bottom: 30px; /* Space below the heading */
+    text-align: center; /* Ensure heading is centered */
+}
+
+.registration-form {
+    width: 100%; /* Ensure form takes full width of container */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+}
+
 .form-group {
-    margin-left: 50px;
-    margin-bottom: 0px;
-    padding: 40;
+    margin-bottom: 0; /* Remove default margin-bottom, replaced by gap on parent */
     text-align: left; /* Align labels to the left */
 }
 
-.form-entry {
-    padding: 0; /* Remove padding to reduce space between input and label */
-}
-
 /* Style for labels */
 .form-group label {
+    display: block; /* Make label a block element for proper spacing */
     font-weight: bold;
-    margin-bottom: 5px;
-    color: black; /* Green color */
+    margin-bottom: 8px; /* Space between label and input */
+    color: #071a07; /* Dark green color */
 }
 
-/* Style for input fields and select */
+/* Style for input fields */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
-.form-group select,
 .form-group input[type="tel"] {
     width: 100%;
     padding: 12px;
-    margin: 0;
-    border: 1px solid #0c043e;
-    border-radius: 10px;
-    background-color: #f8f8f8;
+    border: 1px solid #c0c0c0; /* Lighter border for inputs */
+    border-radius: 8px; /* Slightly less rounded inputs */
+    background-color: #fcfcfc; /* Very light background for inputs */
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.form-group input::placeholder {
+    color: #a0a0a0; /* Lighter placeholder text */
+}
+
+/* Container for the submit button to center it */
+.form-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Space above the button */
 }
 
 /* Style for the submit button */
-.form-group button[type="submit"] {
-    background-color: #008000; /* Green color */
+.submit-button { /* Renamed from .form-group button[type="submit"] */
+    background-color: #008000; /* Green color from image_f87a75.png */
     color: #fff;
     border: none;
     border-radius: 10px;
-    /* padding: 12px 20px; */
-    margin-top: 5px;
-    text-align: center;
+    padding: 12px 25px; /* Increased padding for a larger button */
     cursor: pointer;
-    transition: background-color 0.3s;
-}   
-
-.form-group button[type="submit"]:hover {
-    background-color: #006400; /* Darker green on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.1em; /* Larger text for the button */
+    font-weight: bold;
 }
-h1
-{
-    color: #0c330c;
+
+.submit-button:hover {
+    background-color: #006400; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.login-prompt {
+    text-align: center;
+    margin-top: 25px; /* Space above the prompt */
+    font-size: 1em;
+    color: #555;
+}
+
+.login-prompt a {
+    color: #007bff; /* Standard link blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-prompt a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 25px 30px;
+        margin: 20px auto;
+    }
+
+    .form-heading {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+
+    .registration-form {
+        gap: 15px;
+    }
+
+    .form-group label {
+        margin-bottom: 6px;
+    }
+
+    .form-group input {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .submit-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 400px) {
+    .form-container {
+        padding: 20px;
+        margin: 15px auto;
+    }
+
+    .form-heading {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .registration-form {
+        gap: 12px;
+    }
+
+    .form-group input {
+        padding: 8px;
+    }
 }

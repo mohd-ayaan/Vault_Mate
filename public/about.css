@@ -1,55 +1,156 @@
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-}
+/* about.css */
 
-.step {
-    display: flex;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.step-icon {
-    margin-right: 16px;
-}
-
-.step-circle {
-    width: 30px;
-    height: 30px;
-    background-color: #00AA00;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon {
-    fill: none;
-    stroke: #000;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.step-content {
+/* Reuse the main-content-wrapper from doc.css/contact.css if it's in a shared `style.css` */
+/* If not, define it here: */
+.main-content-wrapper {
     flex-grow: 1;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #F8E7E7; /* Consistent with other pages */
 }
 
-h2 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-p {
-    font-size: 14px;
-    color: #666;
-}
-
-.step-image {
+.about-section {
     width: 100%;
-    height: auto;
+    max-width: 900px; /* Max width for the entire about section */
+    text-align: center;
+}
+
+.about-heading {
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.about-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between different info blocks */
+    text-align: left; /* Align text within blocks to the left */
+}
+
+.about-info-block {
+    margin-bottom: 0; /* Gap handles spacing */
+}
+
+.about-info-block h2 {
+    font-size: 2em;
+    color: #C0516E; /* A prominent color, perhaps from your logo or brand */
+    margin-bottom: 15px;
+}
+
+.about-info-block p,
+.about-info-block ul {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+}
+
+.about-info-block ul {
+    list-style: none; /* Remove default bullet points */
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.about-info-block ul li {
+    position: relative;
+    padding-left: 25px; /* Space for custom bullet */
+    margin-bottom: 10px;
+}
+
+.about-info-block ul li::before {
+    content: '\2713'; /* Checkmark unicode character */
+    color: #008000; /* Green checkmark */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.about-info-block strong {
+    color: #333;
+}
+
+.about-cta {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.about-cta p {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #C0516E; /* Primary button color */
+    color: #fff;
+    text-decoration: none;
     border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #A4455E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(192, 81, 110, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-heading {
+        font-size: 2.5em;
+        margin-bottom: 30px;
+    }
+
+    .about-card {
+        padding: 30px;
+        gap: 25px;
+    }
+
+    .about-info-block h2 {
+        font-size: 1.8em;
+    }
+
+    .about-info-block p,
+    .about-info-block ul {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-heading {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+
+    .about-card {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .about-info-block h2 {
+        font-size: 1.6em;
+    }
+
+    .about-info-block ul li {
+        padding-left: 20px;
+    }
 }

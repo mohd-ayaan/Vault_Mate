@@ -11,31 +11,57 @@
 <body>
     <header class="header">
         <div class="container">
-            <a class="logo" href="#">
+            <a class="logo" href="/"> 
                 <img class="logo-image" src="2.png" alt="Vault Mate Logo">
                 <span class="site-title">VAULT MATE</span>
             </a>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/main">HOME</a></li>
+                    <li><a href="/about">ABOUT</a></li>
+                    <li><a href="/contact">CONTACT</a></li>
+                    <li><a href="/logout">LOG OUT</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    <h1><%= filename %></h1>
-    <div class="box-container">
-        <div class="box">
-            <img src="4.jpg" alt="Square Image">
-        </div>
-        <div class="button-row">
-            <form action='/upload/<%=filename%>'' method="post" enctype="multipart/form-data">
-                <div class="file-input">
-                  <label for="image">Choose an image:</label></br>
-                  <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .pdf" required>
+
+    <main class="doc-main-content">
+        <h1 class="doc-heading"><%= filename %></h1>
+
+        <div class="upload-card">
+            <div class="image-preview">
+                <img src="4.jpg" alt="Document Placeholder" id="document-display">
+            </div>
+
+            <form action='/upload/<%=filename%>' method="post" enctype="multipart/form-data" class="upload-form">
+                <div class="file-input-group">
+                    <label for="image" class="file-input-label">Choose an image:</label>
+                    <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .pdf" required>
+                    <span id="file-name" class="selected-file-name">No file chosen</span>
                 </div>
-                <button type="submit">Upload</button>
-              </form>
-            <a href="/image/<%=filename%>" target="_blank"><button class="green-button">Preview</button></a>
+                <div class="form-actions">
+                    <button type="submit" class="button upload-button">Upload</button>
+                    <a href="/image/<%=filename%>" target="_blank" class="button preview-button">Preview</a>
+                </div>
+            </form>
         </div>
-    </div>
-    <br>
+    </main>
+
     <footer class="footer">
-        <h3 align = "left">&nbsp;&copy; 2023 Vault Mate. All rights reserved.</h3>
+        <h3>&copy; <%= new Date().getFullYear() %> Vault Mate. All rights reserved. | <a href="/privacy" style="color: inherit; text-decoration: none;">Privacy Policy</a> | <a href="/terms" style="color: inherit; text-decoration: none;">Terms of Service</a></h3>
     </footer>
+
+    <script>
+        // JavaScript to display the selected file name
+        document.getElementById('image').addEventListener('change', function() {
+            const fileNameSpan = document.getElementById('file-name');
+            if (this.files && this.files.length > 0) {
+                fileNameSpan.textContent = this.files[0].name;
+            } else {
+                fileNameSpan.textContent = 'No file chosen';
+            }
+        });
+    </script>
 </body>
 </html>

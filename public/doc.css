@@ -1,47 +1,159 @@
-.box-container {
+/* doc.css */
+
+/* General styles for the main content area of doc.ejs */
+.doc-main-content {
+    flex-grow: 1; /* Allows this section to fill available vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    padding: 40px 20px; /* Padding around the main content */
+    background-color: #F8E7E7; /* Consistent with body background */
+}
+
+.doc-heading {
+    font-size: 2.5em; /* Adjusted heading size for better hierarchy */
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase; /* Match existing style for titles */
+}
+
+/* Card container for the upload section */
+.upload-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 30px;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    box-shadow: 0px 10px 8px rgba(7, 94, 7, 0.873); /* Green color shadow with increased Y-offset */
-    max-width: 500px;
-    margin: 20px auto; /* Add top margin of 20px to move it down */
+    gap: 30px; /* Space between image and form */
+    max-width: 500px; /* Max width for the card */
+    width: 100%; /* Ensure it takes full width on smaller screens */
 }
 
-
-.box {
-    width: 400px;
-    height: 400px;
-    overflow: hidden;
-    border: 2px solid #008000; /* Green border */
-    border-radius: 10px;
-}
-
-.box img {
-    width:400px;
-    display: block;
-    margin: 0 auto;
-}
-
-.button-row {
+/* Image preview section */
+.image-preview {
+    width: 100%;
+    max-width: 300px; /* Control max width of the image */
+    height: 200px; /* Fixed height for consistent layout */
+    border: 1px solid #ddd;
+    border-radius: 8px;
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide overflowing parts of the image */
+    background-color: #f9f9f9; /* Light background if no image */
 }
 
-.green-button {
-    padding: 10px 20px;
-    background-color: #008000; /* Green button background color */
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-right: 10px; /* Add margin to create space between buttons */
+.image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the whole image is visible without cropping */
+    display: block; /* Remove extra space below image */
 }
-.green-button:hover {
-    background-color: #006400; /* Darker green on hover */
+
+/* Form styling */
+.upload-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between form elements */
+}
+
+.file-input-group {
+    width: 100%;
+    text-align: left; /* Align label and input to the left within the group */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.file-input-label {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: bold;
+}
+
+.file-input-group input[type="file"] {
+    width: 100%;
+    padding: 10px; /* Add some padding to the input */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+/* Style for displaying the selected file name */
+.selected-file-name {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px; /* Space above the text */
+}
+
+
+.form-actions {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    width: 100%;
+    justify-content: center; /* Center buttons */
+    margin-top: 10px;
+}
+
+.button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* For the anchor tag button */
+    text-align: center;
+    display: inline-block; /* Allow padding and sizing */
+    min-width: 120px;
+}
+
+.upload-button {
+    background-color: #C0516E; /* Primary action color */
+    color: #fff;
+}
+
+.upload-button:hover {
+    background-color: #A4455E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(192, 81, 110, 0.2);
+}
+
+.preview-button {
+    background-color: #28a745; /* Green for preview */
+    color: #fff;
+}
+
+.preview-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+    .doc-heading {
+        font-size: 2em;
+    }
+
+    .upload-card {
+        padding: 25px;
+        gap: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+
+    .button {
+        width: 100%; /* Make buttons full width */
+    }
 }

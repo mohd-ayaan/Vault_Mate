@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ValtMate</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Mate - Loading...</title>
+    <link rel="stylesheet" href="load.css"> 
 </head>
-<body id="load">
-    <center>
-        <img src="2.png">
-        <h1>VAULT MATE</h1>
-    </center>
+<body class="loading-page">
+    <div class="loader-container">
+        <img src="2.png" alt="Vault Mate Logo" class="loader-logo">
+        <h1 class="loader-title">VAULT MATE</h1>
+        <p class="loader-tagline">Your Documents, Our Priority. Securely Stored.</p> 
+        <div class="spinner"></div> 
+    </div>
 
     <script>
+       
         setTimeout(function () {
-            window.location.href='/signin';
-        }, 3000);
+            window.location.href = '/signin';
+        }, 3000); // Redirect after 3 seconds
     </script>
 </body>
 </html>
