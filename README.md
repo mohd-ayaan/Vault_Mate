@@ -2,7 +2,9 @@
 
 ## Secure Digital Document Management System
 
-![Vault Mate Logo](public/2.png) Vault Mate is a robust and user-friendly web application designed to help individuals securely store, organize, and manage their important digital documents. From personal IDs like Aadhar cards, PAN cards, passports, and driving licenses to academic marksheets and other essential images, Vault Mate provides a centralized, encrypted, and easily accessible digital vault.
+![Vault Mate Logo](public/SignIn.png)
+![Vault Mate Logo](public/VaultMate_HomePage.png)
+ Vault Mate is a robust and user-friendly web application designed to help individuals securely store, organize, and manage their important digital documents. From personal IDs like Aadhar cards, PAN cards, passports, and driving licenses to academic marksheets and other essential images, Vault Mate provides a centralized, encrypted, and easily accessible digital vault.
 
 Our priority is to ensure your documents are safe, accessible only to you, and well-organized, eliminating the hassle of physical paperwork.
 
