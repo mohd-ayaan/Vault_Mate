@@ -8,7 +8,8 @@ const profileImgSchema = new mongoose.Schema({
     ImageName:{
         required :true,
         type:String
-    }
+    },
+    MimeType: { type: String }
 });
 const Images = new mongoose.model("images",profileImgSchema);    // images
 

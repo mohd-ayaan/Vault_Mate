@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="doc.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/doc.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>VAULT MATE</title>
 </head>
@@ -12,7 +12,7 @@
     <header class="header">
         <div class="container">
             <a class="logo" href="/"> 
-                <img class="logo-image" src="2.png" alt="Vault Mate Logo">
+                <img class="logo-image" src="\2.png" alt="Vault Mate Logo">
                 <span class="site-title">VAULT MATE</span>
             </a>
             <nav class="menu">
@@ -31,7 +31,14 @@
 
         <div class="upload-card">
             <div class="image-preview">
-                <img src="4.jpg" alt="Document Placeholder" id="document-display">
+                <% if (!mimeType || mimeType === 'unknown') { %>
+                  <p style="text-align:center;">No document uploaded yet.</p>
+                <% } else if (mimeType === 'application/pdf') { %>
+                  <iframe src="/image/<%= filename %>" width="100%" height="600px" style="border:none;"></iframe>
+                <% } else { %>
+                  <img src="/image/<%= filename %>" alt="Document Preview" id="document-display">
+                <% } %>
+
             </div>
 
             <form action='/upload/<%=filename%>' method="post" enctype="multipart/form-data" class="upload-form">

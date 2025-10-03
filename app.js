@@ -9,8 +9,26 @@ import save_image_file_service from "./services/save_image_file_service.js";
 import generate_token from "./utils/generate_token.js";
 import verifyToken from "./middlewares/verifyToken.js"; // Your custom middleware
 import multer from "multer";
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+
+// Access format: req.file.path (file path on disk) 
+// Better for large files
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'uploads/'); // folder where files are saved
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + '-' + file.originalname); // unique filename
+//   }
+// });
+
+
+// Store the uploaded file in RAM (not on disk).Faster for small files	
+// Access Format: req.file.buffer (base64 or raw)
+const storage = multer.memoryStorage();  
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB max
+});
 
 dotenv.config();
 const port =3000;
@@ -21,26 +39,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 
-app.get("/",(req,res)=>{
-    res.render("load.ejs");
-});
 
-app.get("/about",(req,res)=>{
-    res.render("about.ejs");
-});
-
-app.get("/contact",(req,res)=>{
-    res.render("contact.ejs");
-});
-
-// IMPORTANT: Modify the /main route and /user route to fetch and pass user data
-// Or ensure main.ejs handles 'user' potentially being null/undefined
-
-// Common function to render main.ejs with user data
+// function to render main.ejs with user data
 const renderMainPage = async (req, res, userPhoneNumber = null) => {
     let userName = "Vault Mate User";
-    let recentDocuments = []; // Initialize empty array
-
+    let recentDocuments = []; 
     try {   
         let foundUser = null;
         if (userPhoneNumber) {
@@ -56,7 +59,6 @@ const renderMainPage = async (req, res, userPhoneNumber = null) => {
         }
     } catch (err) {
         console.error("Error fetching user data for main page:", err);
-        // Continue with default 'Vault Mate User' if there's a DB error
     }
 
     res.render("main.ejs", {
@@ -66,15 +68,13 @@ const renderMainPage = async (req, res, userPhoneNumber = null) => {
 };
 
 
-// Route for the main page (accessible without login for basic viewing if desired, but user data will be default)
-// For a fully secure app, you might want to remove this or redirect to signin if not logged in.
-app.get("/main", (req, res) => {
-    renderMainPage(req, res); // Call helper function, no userPhoneNumber initially
+// Get routes
+app.get("/",(req,res)=>{
+    res.render("load.ejs");
 });
 
 // Route for logged-in user dashboard (protected by verifyToken)
-app.get("/user", verifyToken, async (req, res) => {
-    // req.user.user should be available here from verifyToken
+app.get("/main", verifyToken, async (req, res) => {
     await renderMainPage(req, res, req.user.user); // Pass userPhoneNumber from token
 });
 
@@ -87,29 +87,51 @@ app.get("/signup",(req,res)=>{
     res.render("signup.ejs");
 });
 
+app.get("/about",(req,res)=>{
+    res.render("about.ejs");
+});
+
+app.get("/contact",(req,res)=>{
+    res.render("contact.ejs");
+});
+
 app.get("/logout", (req, res) => {
     res.clearCookie('authToken');
     res.redirect("/signin");
 });
 
+// Post routes
+app.post("/signup", (req, res) => {
+  console.log(req.body);
 
-app.post("/signup",(req,res)=>{
-    console.log(req.body);
-    const userr = new User({
-        _id: req.body.phoneNumber,
-        Email : req.body.email,
-        Name : req.body.firstName+" "+req.body.lastName,
-        Password : req.body.password
-    });
-    userr.save()
-    .then(()=>{
-        console.log("New user saved!");
-        res.render("gotregistered.ejs");
-    }).catch((err)=>{
-        console.log(err);
-        res.render("useralreadyexits.ejs");
+  const isValidPhone = /^[6-9]\d{9}$/.test(req.body.phoneNumber);
+  if (!isValidPhone) {
+    return res.status(400).send("Invalid phone number format");
+  }
+
+  const userr = new User({
+    _id: req.body.phoneNumber,
+    Email: req.body.email,
+    Name: req.body.firstName + " " + req.body.lastName,
+    Password: req.body.password
+  });
+
+  userr.save()
+    .then(() => {
+      console.log("New user saved!");
+
+      // ✅ Generate token and set cookie
+      const token = generate_token({ user: req.body.phoneNumber }, '30m');
+      res.cookie('authToken', token, { httpOnly: true });
+
+      res.redirect("/main"); // ✅ Redirect to protected dashboard
     })
+    .catch((err) => {
+      console.log(err);
+      res.render("useralreadyexits.ejs");
+    });
 });
+
 
 app.post("/signin",(req,res)=>{
     console.log(req.body);
@@ -121,7 +143,7 @@ app.post("/signin",(req,res)=>{
         }else if(detail.Password==req.body.password){
             const token = generate_token({user:req.body.mobile},'30m');
             res.cookie('authToken', token, { httpOnly: true });
-            res.redirect("/user"); // Redirect to the /user route after successful login
+            res.redirect("/main"); // Redirect to the /main route after successful login
         }
         else{
             res.render("wrongpassword.ejs");
@@ -134,40 +156,57 @@ app.post("/signin",(req,res)=>{
 });
 
 
-// Docs routes - (Keep them as they are, no direct user object needed for doc.ejs)
-app.get("/aadhar", (req, res) => { res.render("doc.ejs", { filename: 'Aadhar' }); });
-app.get("/passport",(req,res)=>{ res.render("doc.ejs", { filename: 'Passport' }); });
-app.get("/pancard",(req,res)=>{ res.render("doc.ejs", { filename: 'Pancard' }); });
-app.get("/drivinglicence",(req,res)=>{ res.render("doc.ejs", { filename: 'DrivingLicence' }); });
-app.get("/highschoolmarsheet",(req,res)=>{ res.render("doc.ejs", { filename: 'Highschool' }); });
-app.get("/inter",(req,res)=>{ res.render("doc.ejs", { filename: 'Inter' }); });
-app.get("/abc",(req,res)=>{ res.render("doc.ejs", { filename: 'ABCID' }); });
-app.get("/others",(req,res)=>{ res.render("doc.ejs", { filename: 'Others' }); });
+// Docs route
+app.get("/doc/:type", verifyToken, async (req, res) => {
+  const userId = req.user.user;
+  const rawType = req.params.type;
+  const normalizedType = rawType.charAt(0).toUpperCase() + rawType.slice(1).toLowerCase();
 
+  try {
+    const user = await User.findOne({ _id: userId });
+    const imageId = user?.[normalizedType];
+    let mimeType = null;
 
-// Upload routes - make sure they also get the filename
-app.get("/upload", verifyToken, (req,res)=>{
-    // This route needs to determine the filename for the upload.
-    // For a generic /upload page, you might pass 'Others' or have a selection UI.
-    res.render("upload.ejs", { filename: 'Others' });
-});
+    if (imageId) {
+      const imageDoc = await Images.findById(imageId);
+      mimeType = imageDoc?.MimeType || null;
+    }
 
-// If you have specific upload links for each document type, add routes like these:
-app.get("/upload/aadhar", verifyToken, (req, res) => {
-    res.render("upload.ejs", { filename: 'Aadhar' });
-});
-// ... add similar routes for /upload/passport, /upload/pancard, etc.
-
-app.get("/uploadsucess",(req,res)=>{
-    res.render("uploadsucess.ejs");
-});
-
-app.get("/preview",(req,res)=>{
-    res.render("preview.ejs");
+    res.render("doc.ejs", {
+      filename: normalizedType,
+      mimeType: mimeType || "unknown"
+    });
+  } catch (err) {
+    console.error("Error loading document:", err);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 
+
+
+
+// req.file = {
+//   fieldname: 'image',
+//   originalname: 'passport.jpg',
+//   encoding: '7bit',
+//   mimetype: 'image/jpeg',
+//   buffer: <Buffer ...>, // if using memoryStorage
+//   size: 102400
+// }
+
+// req.user is a custom property added to the request object by verifyToken middleware, It contains the decoded JWT payload, which includes the user’s phone number (used as _id in MongoDB) for Authentiction.
+// req.user={
+//   user: "9876543210", // phone number used as _id
+//   iat: ..., // issued at
+//   exp: ...  // expiry timestamp
+// }
+
+// req.params contains route parameters defined in the URL path, These are dynamic segments like :filemode in /upload/:filemode.
+
+// upload.single('image'): Tells Multer to expect one file only, form field named "image"
 app.post('/upload/:filemode',upload.single('image'),verifyToken,(req,res)=>{
+    // save_image_file_service(file, userID ,feilds)
     save_image_file_service(req.file,req.user.user,req.params.filemode)
     .then(()=>{
         res.redirect('/uploadsucess');
@@ -179,6 +218,7 @@ app.post('/upload/:filemode',upload.single('image'),verifyToken,(req,res)=>{
 
 app.get('/image/:filemode',verifyToken,(req,res)=>{
     const user = req.user.user;
+    console.log('Image request for user:', user);
     const filename = req.params.filemode;
     User.findOne({_id:user})
     .then(response=>{
@@ -190,9 +230,16 @@ app.get('/image/:filemode',verifyToken,(req,res)=>{
                 if (!data) {
                     return res.status(404).json({ error: "Image not found, Please upload the image first..!" });
                 } else {
-                    const contentType = data.Image.startsWith("/9j/") ? 'image/jpeg' : 'image/png';
-                    res.set('Content-Type', contentType);
+                    // dynamically set the correct MIME type when serving images stored in MongoDB.
+                    // Set the correct Content-Type header so the browser knows how to render it, JPEG images typically start with the base64 prefix "/9j/"
+                    // const contentType = data.Image.startsWith("/9j/") ? 'image/jpeg' : 'image/png';
+                    // res.set('Content-Type', contentType);
+                    // res.send(Buffer.from(data.Image, 'base64'));
+
+                    
+                    res.set('Content-Type', data.MimeType || 'application/octet-stream');
                     res.send(Buffer.from(data.Image, 'base64'));
+
                 }
             })
             .catch((err) => {
@@ -207,6 +254,10 @@ app.get('/image/:filemode',verifyToken,(req,res)=>{
         res.send('Internal server error');
     })
 });
+
+app.get("/uploadsucess",(req,res)=>{
+    res.render("uploadsucess.ejs");
+}); 
 
 
 let localAddress = 'localhost';
