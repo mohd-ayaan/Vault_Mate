@@ -18,19 +18,21 @@
             </a>
             <nav class="menu">
                 <ul>
-                    <li><a href="/about">ABOUT</a></li>
-                    <li><a href="/contact">CONTACT</a></li>
+                    <li><a href="/signup">SignUp</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <div class="page-wrapper">
-        <div class="login-card"> <h2 class="section-title">Login to your account</h2> <p class="social-login-text">Login using Social accounts</p> <div class="fa-container social-icons-login"> <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
+        <div class="login-card"> <h2 class="section-title">Secure Access to Your Vault</h2> <p class="social-login-text">Login using Social accounts</p> <div class="fa-container social-icons-login"> <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>  
                 <a href="#" class="fa fa-google"></a>
             </div>
             <p class="or-separator">OR</p> <form action="/signin" method="post" class="login-form">
+                <p class="info-text">After entering your password, you’ll receive a one-time code via email to complete login.</p>
                 <div class="input-group">
                     <input type="text" class="form-input" placeholder="Mobile Number" name="mobile" required>
                     <input type="password" class="form-input" name="password" placeholder="password" required>
@@ -39,11 +41,13 @@
                     <button type="reset" class="form-button reset-button">Reset</button>
                     <button type="submit" class="form-button signin-button">Sign In</button>
                 </div>
+                <a href="/forgot-password" class="forgot-link">Forgot Password?</a>
+
             </form>
         </div>
 
-        <div class="signup-card"> <h2 class="section-title">New Here?</h2> <p class="section-subtitle">Sign Up and discover new opportunities here</p> <img src="1.png" alt="Vault Mate Logo" class="circular-image">
-            <a class="form-button signup-button" href="/signup">Sign Up</a> </div>
+        <!-- <div class="signup-card"> <h2 class="section-title">New Here?</h2> <p class="section-subtitle">Sign Up and discover new opportunities here</p> <img src="1.png" alt="Vault Mate Logo" class="circular-image">
+            <a class="form-button signup-button" href="/signup">Sign Up</a> </div> -->
     </div>
 
     <footer class="footer">

@@ -1,0 +1,115 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Enter the OTP sent to <%= email %></h2>
+    <form method="POST" action="/verify-otp">
+      <input type="text" name="enteredOtp" maxlength="6" required />
+      <button type="submit">Verify OTP</button>
+    </form>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP - Vault Mate</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F8E7E7; /* Light pink background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .otp-container {
+            background-color: #ffffff; /* White card background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 1.5em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.5em;
+            text-align: center;
+            letter-spacing: 5px; /* Highlight OTP input */
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #C0516E; /* Focus color from your theme */
+            outline: none;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #008000; /* Green primary button color */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #006400; /* Darker green on hover */
+            transform: translateY(-1px);
+        }
+        
+        /* Optional: Style for error messages if you add them later */
+        .error-message {
+            color: #C0516E;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="otp-container">
+        <h2>Enter the OTP sent to <%= email %></h2>
+        <form method="POST" action="/verify-otp">
+          <input type="text" name="enteredOtp" maxlength="6" pattern="\d{6}" placeholder="------" required />
+          <button type="submit">Verify OTP</button>
+        </form>
+        <% if (locals.error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+    </div>
+</body>
+</html>

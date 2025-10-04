@@ -17,10 +17,10 @@
             </a>
             <nav class="menu">
                 <ul>
-                    <li><a href="/main">HOME</a></li>
-                    <li><a href="/about">ABOUT</a></li>
-                    <li><a href="/contact">CONTACT</a></li>
-                    <li><a href="/logout">LOG OUT</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/logout">LogOut</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,7 +43,7 @@
 
             <form action='/upload/<%=filename%>' method="post" enctype="multipart/form-data" class="upload-form">
                 <div class="file-input-group">
-                    <label for="image" class="file-input-label">Choose an image:</label>
+                    <label for="image" class="file-input-label">Choose document:</label>
                     <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .pdf" required>
                     <span id="file-name" class="selected-file-name">No file chosen</span>
                 </div>

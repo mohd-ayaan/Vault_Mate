@@ -16,57 +16,62 @@
             </a>
             <nav class="menu">
                 <ul>
-                    <li><a href="/main">HOME</a></li>
-                    <li><a href="/about">ABOUT</a></li>
-                    <li><a href="/contact">CONTACT</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="main-content-wrapper">
-        <section class="about-section">
-            <h1 class="about-heading">About Vault Mate</h1>
+  <section class="about-section">
+    <h1 class="about-heading">About Vault Mate</h1>
 
-            <div class="about-card">
-                <div class="about-info-block">
-                    <h2>Your Secure Digital Vault</h2>
-                    <p>Welcome to Vault Mate, your trusted partner for secure and organized digital document management. In today's fast-paced world, keeping track of important documents can be a challenge. Vault Mate provides a seamless solution to store, access, and manage all your vital papers, from Aadhar cards and passports to academic marksheets and business IDs, all in one encrypted place.</p>
-                </div>
+    <div class="about-card">
+      <div class="about-info-block">
+        <h2>Your Secure Digital Vault</h2>
+        <p>Vault Mate is a privacy-first platform designed to help you securely store, preview, and manage your most important documents—Aadhar, PAN, passports, marksheets, and more. Built with a modular backend and robust authentication, Vault Mate ensures your data stays protected and accessible only to you.</p>
+      </div>
 
-                <div class="about-info-block">
-                    <h2>Our Mission</h2>
-                    <p>Our mission is to simplify document management and enhance data security for individuals and businesses alike. We aim to provide an intuitive platform that empowers you to take control of your digital life, reducing clutter and ensuring that your crucial information is always safe and readily available.</p>
-                </div>
+      <div class="about-info-block">
+        <h2>What We've Built So Far</h2>
+        <ul>
+          <li><strong>OTP-Based Authentication:</strong> Both signup and login flows are protected by email-based OTP verification for true 2FA.</li>
+          <li><strong>Hashed Passwords:</strong> User credentials are securely hashed using bcrypt before storage—no plain text ever.</li>
+          <li><strong>Secure Uploads:</strong> Documents are uploaded via memory-based storage and stored in MongoDB with MIME-aware rendering.</li>
+          <li><strong>Dynamic Routing:</strong> Each document type is served through a single scalable route with intelligent MIME detection.</li>
+          <li><strong>Session Management:</strong> OTPs and user states are securely managed using express-session middleware.</li>
+        </ul>
+      </div>
 
-                <div class="about-info-block">
-                    <h2>Why Choose Vault Mate?</h2>
-                    <ul>
-                        <li><strong>Unmatched Security:</strong> We employ robust encryption and multi-layered security protocols to protect your sensitive documents from unauthorized access.</li>
-                        <li><strong>Easy Accessibility:</strong> Access your documents anytime, anywhere, from any device with an internet connection. No more searching through physical files!</li>
-                        <li><strong>Effortless Organization:</strong> Categorize and retrieve your documents with ease, ensuring nothing gets lost or misplaced.</li>
-                        <li><strong>Time-Saving Convenience:</strong> Upload and manage documents quickly, freeing up your time for what matters most.</li>
-                        <li><strong>Eco-Friendly:</strong> Reduce your reliance on paper documents and contribute to a greener environment.</li>
-                    </ul>
-                </div>
+      <div class="about-info-block">
+        <h2>Why Vault Mate?</h2>
+        <ul>
+          <li><strong>Privacy First:</strong> OTP verification ensures only verified users can access their vault.</li>
+          <li><strong>Modular Architecture:</strong> Designed for scalability, maintainability, and recruiter-readiness.</li>
+          <li><strong>Document Preview:</strong> View uploaded documents directly in-browser with correct MIME types.</li>
+          <li><strong>Error-Resilient:</strong> Backend routes are optimized for debugging, validation, and exception handling.</li>
+        </ul>
+      </div>
 
-                <div class="about-info-block">
-                    <h2>How It Works</h2>
-                    <p>Simply upload your documents (like your Aadhar Card, PAN Card, Passports, Marksheets, etc.) to your personalized secure vault. Our platform handles the organization, and you can easily view, and download them whenever needed, with complete peace of mind.</p>
-                </div>
+      <div class="about-info-block">
+        <h2>How It Works</h2>
+        <p>Sign up with your mobile number and email. After verifying your OTP, you’ll gain access to your personal vault. Upload documents, preview them instantly, and retrieve them anytime—all protected by secure sessions and hashed credentials.</p>
+      </div>
 
-                <div class="about-info-block">
-                    <h2>Your Privacy, Our Priority</h2>
-                    <p>We understand the importance of your personal data. Vault Mate is committed to strict privacy policies, ensuring that your information remains confidential and is never shared without your explicit consent.</p>
-                </div>
+      <div class="about-info-block">
+        <h2>Your Privacy, Our Priority</h2>
+        <p>Vault Mate never stores passwords in plain text and never shares your data without consent. Every document is stored securely, and every login is verified with OTP to ensure your vault stays yours.</p>
+      </div>
 
-                <div class="about-cta">
-                    <p>Ready to simplify your document management?</p>
-                    <a href="/signup" class="cta-button">Get Started Today!</a>
-                </div>
-            </div>
-        </section>
-    </main>
+      <div class="about-cta">
+        <p>Ready to experience secure document management?</p>
+        <a href="/signup" class="cta-button">Get Started Today!</a>
+      </div>
+    </div>
+  </section>
+</main>
+
 
     <footer class="footer">
         <h3>&copy; <%= new Date().getFullYear() %> Vault Mate. All rights reserved. | <a href="/privacy" style="color: inherit; text-decoration: none;">Privacy Policy</a> | <a href="/terms" style="color: inherit; text-decoration: none;">Terms of Service</a></h3>
